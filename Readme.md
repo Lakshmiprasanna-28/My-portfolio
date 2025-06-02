@@ -29,7 +29,6 @@ It includes the following pages:
 - Resume download functionality  
 - Modular structure with separate HTML pages  
 
-📂 Folder Structure  
 portfolio/
 ├── index.html
 ├── about.html
@@ -38,14 +37,14 @@ portfolio/
 ├── contact.html
 ├── resume.html
 ├── assets/
-│ ├── css/
-│ │ └── style.css
-│ ├── js/
-│ │ └── script.js
-│ ├── images/
-│ │ └── profile.jpg
-│ └── resume/
-│ └── Thota_Lakshmi_Prasanna_Resume.pdf
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── script.js
+│   ├── images/
+│   │   └── profile.jpg
+│   └── resume/
+│       └── Thota_Lakshmi_Prasanna_Resume.pdf
 
 
 📫 Contact Me  
