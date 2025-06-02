@@ -30,23 +30,22 @@ It includes the following pages:
 - Modular structure with separate HTML pages
 
 ## 📂 Folder Structure
-📁 portfolio/
-├── index.html
-├── about.html
-├── skills.html
-├── projects.html
-├── contact.html
-├── resume.html
-├── assets/
-│ ├── css/
-│ │ └── style.css
-│ ├── js/
-│ │ └── script.js
-│ ├── images/
-│ │ └── profile.jpg
-│ └── resume/
-│ └── Thota_Lakshmi_Prasanna_Resume.pdf
-
+📁 portfolio/  
+├── index.html  
+├── about.html  
+├── skills.html  
+├── projects.html  
+├── contact.html  
+├── resume.html  
+├── assets/  
+│ ├── css/  
+│ │ └── style.css  
+│ ├── js/  
+│ │ └── script.js  
+│ ├── images/  
+│ │ └── profile.jpg  
+│ └── resume/  
+│   └── Thota_Lakshmi_Prasanna_Resume.pdf  
 
 ## 📫 Contact Me
 
