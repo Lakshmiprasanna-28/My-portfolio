@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Testimonials | Thota Lakshmi Prasanna</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* Remove overriding display:flex on .nav-links by default */
+
+    /* Nav links base styles */
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+
+      /* Add horizontal scrollbar for mobile */
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #888 transparent;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .nav-links::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .nav-links::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 3px;
+    }
+
+    /* Responsive styles for nav-links */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #007acc;
+        position: absolute;
+        top: 65px;
+        right: 20px;
+        width: 200px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        padding: 10px 0;
+        z-index: 1001;
+        overflow-y: auto;
+        max-height: 80vh;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+    }
+
+    /* Optional: Hide scrollbar on larger screens */
+    @media(min-width: 768px) {
+      .nav-links {
+        overflow-x: visible;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="brand">MyPortfolio</div>
+      <div class="hamburger">&#9776;</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="testimonials.html" class="active">Testimonials</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <h1>What People Say About Me</h1>
+
+    <div class="testimonials-section">
+      <div class="testimonial">
+        <p>"Lakshmi is a talented developer who always delivers on time."</p>
+        <h4>- John Doe, Project Manager</h4>
+      </div>
+      <div class="testimonial">
+        <p>"Her problem-solving skills helped us complete our project successfully."</p>
+        <h4>- Jane Smith, Team Lead</h4>
+      </div>
+      <div class="testimonial">
+        <p>"She’s detail-oriented and communicates effectively throughout the development process."</p>
+        <h4>- Arun Patel, Software Engineer</h4>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="feedback.html" class="btn">Leave Feedback</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Thota Lakshmi Prasanna. All rights reserved.
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

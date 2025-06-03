@@ -66,6 +66,25 @@ body {
   list-style: none;
   display: flex;
   gap: 30px;
+
+  /* Add horizontal scrollbar for mobile */
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-links::-webkit-scrollbar {
+  height: 6px;
+}
+
+.nav-links::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nav-links::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 3px;
 }
 
 .nav-links li a {
@@ -73,6 +92,7 @@ body {
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
+  white-space: nowrap; /* prevent wrapping in horizontal scroll */
 }
 
 .nav-links li a:hover,
@@ -300,6 +320,8 @@ h1 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     padding: 10px 0;
     z-index: 1001;
+    overflow-y: auto;
+    max-height: 80vh;
   }
 
   .nav-links.show {
@@ -387,4 +409,10 @@ h1 {
   40% {
     transform: scale(1);
   }
+}
+
+.btn.disabled {
+  pointer-events: none;
+  background-color: #ccc;
+  cursor: not-allowed;
 }

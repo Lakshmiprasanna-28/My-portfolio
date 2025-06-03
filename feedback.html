@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feedback | Thota Lakshmi Prasanna</title>
+  <style>
+    * { box-sizing: border-box; }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    nav.navbar {
+      background-color: #007acc;
+      color: white;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+      user-select: none;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    ul.nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #888 transparent;
+    }
+
+    ul.nav-links::-webkit-scrollbar { height: 6px; }
+    ul.nav-links::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 3px;
+    }
+
+    ul.nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 8px;
+      white-space: nowrap;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    ul.nav-links li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    ul.nav-links li a.active {
+      background-color: transparent;
+      color: #fff8b5;
+      box-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      ul.nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #007acc;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border-radius: 8px;
+        padding: 10px 0;
+        z-index: 1001;
+      }
+      ul.nav-links.show { display: flex; }
+      ul.nav-links li { margin: 8px 0; text-align: center; }
+    }
+
+    main.container {
+      max-width: 600px;
+      margin: 80px auto 100px;
+      background-color: #f9f9f9;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+      border-radius: 10px;
+      padding: 25px 30px;
+      flex-grow: 1;
+      border: 2px solid #007acc;
+    }
+
+    main.container h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 6px;
+      border: 1.5px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #007acc;
+      outline: none;
+      background-color: #fff;
+    }
+
+    .rating {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+      margin-top: 8px;
+      gap: 8px;
+    }
+
+    .rating input { display: none; }
+    .rating label {
+      font-size: 30px;
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    .rating input:checked ~ label,
+    .rating label:hover,
+    .rating label:hover ~ label {
+      color: gold;
+    }
+
+    .recommendation {
+      margin-top: 12px;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .recommendation input[type="radio"] {
+      margin-right: 6px;
+    }
+
+    .recommendation label {
+      cursor: pointer;
+      font-weight: 600;
+      color: #333;
+    }
+
+    button[type="submit"] {
+      margin-top: 28px;
+      width: 100%;
+      padding: 12px 0;
+      background-color: #007acc;
+      border: none;
+      border-radius: 7px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #005fa3;
+    }
+
+    footer {
+      background-color: #007acc;
+      color: white;
+      text-align: center;
+      padding: 18px 20px;
+      margin-top: auto;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+
+    #successMessage {
+      display: none;
+      text-align: center;
+      background: #d4edda;
+      color: #155724;
+      padding: 20px;
+      margin: 30px auto;
+      border-radius: 8px;
+      max-width: 600px;
+    }
+
+    #successMessage button {
+      margin: 10px 10px 0;
+      background-color: #007acc;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #successMessage button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" role="navigation">
+    <div class="navbar-container">
+      <div class="brand">MyPortfolio</div>
+      <div class="hamburger" tabindex="0">&#9776;</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="feedback.html" class="active">Feedback</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h2>We Value Your Feedback</h2>
+    <form 
+      action="https://formsubmit.co/thotalakshmiprasanna825@gmail.com" 
+      method="POST" 
+      target="formFrame"
+    >
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_autoresponse" value="Thank you for your feedback! I appreciate your response.">
+
+      <label for="name">Your Name <span style="color:#d00;">*</span></label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Your Email (optional)</label>
+      <input type="email" id="email" name="email">
+
+      <label>Rate Your Experience <span style="color:#d00;">*</span></label>
+      <div class="rating">
+        <input type="radio" id="star5" name="rating" value="5" required>
+        <label for="star5">★</label>
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4">★</label>
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3">★</label>
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2">★</label>
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1">★</label>
+      </div>
+
+      <label for="project">Which Project?</label>
+      <select id="project" name="project">
+        <option value="Portfolio">Portfolio</option>
+        <option value="Brilligo">Brilligo</option>
+        <option value="Blog CMS">Blog CMS</option>
+        <option value="Task Manager App">Task Manager App</option>
+        <option value="Weather App">Weather App</option>
+        <option value="E-commerce Store">E-commerce Store</option>
+      </select>
+
+      <label>Would you recommend me?</label>
+      <div class="recommendation">
+        <input type="radio" id="yes" name="recommend" value="Yes">
+        <label for="yes">Yes</label>
+        <input type="radio" id="no" name="recommend" value="No">
+        <label for="no">No</label>
+      </div>
+
+      <label for="feedback">Your Feedback <span style="color:#d00;">*</span></label>
+      <textarea id="feedback" name="feedback" rows="5" required></textarea>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+
+    <iframe name="formFrame" style="display: none;"></iframe>
+
+    <div id="successMessage">
+      <h2>✅ Thank you for your feedback!</h2>
+      <p>Your submission has been sent successfully.</p>
+      <button onclick="location.reload()">Submit Another Feedback</button>
+      <button onclick="window.location.href='index.html'">Go Back to Home</button>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Thota Lakshmi Prasanna. All rights reserved.
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    hamburger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        navLinks.classList.toggle("show");
+      }
+    });
+
+    document.querySelector("form").addEventListener("submit", function (e) {
+      const form = this;
+      const name = form.name.value.trim();
+      const rating = form.querySelector('input[name="rating"]:checked');
+      const feedback = form.feedback.value.trim();
+
+      if (!name) {
+        alert("Please enter your name.");
+        form.name.focus();
+        e.preventDefault();
+        return;
+      }
+
+      if (!rating) {
+        alert("Please rate your experience.");
+        e.preventDefault();
+        return;
+      }
+
+      if (!feedback) {
+        alert("Please provide your feedback.");
+        form.feedback.focus();
+        e.preventDefault();
+        return;
+      }
+
+      setTimeout(() => {
+        form.style.display = "none";
+        document.getElementById("successMessage").style.display = "block";
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

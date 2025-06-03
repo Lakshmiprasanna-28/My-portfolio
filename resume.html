@@ -6,44 +6,91 @@
   <title>Resume | Thota Lakshmi Prasanna</title>
   <link rel="stylesheet" href="assets/css/style.css" />
   <style>
-    /* Extra styles specifically for resume content */
-    .resume-section {
-      max-width: 900px;
-      margin: 150px auto 80px;
-      padding: 20px 20px 120px; /* extra bottom padding to prevent footer overlap */
-      background: #f7fbff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,122,204,0.1);
-      color: #003366;
+    body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
+      background-color: #f7fbff;
+      color: #003366;
+      margin: 0;
+      padding: 0;
     }
-    .resume-section h2 {
+    .resume-container {
+      max-width: 900px;
+      margin: 120px auto 80px auto;
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,122,204,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #007acc;
+      margin-bottom: 8px;
+    }
+    h2 {
       color: #007acc;
       border-bottom: 2px solid #007acc;
       padding-bottom: 6px;
+      margin-top: 30px;
       margin-bottom: 12px;
     }
-    .resume-section h3 {
-      margin-top: 20px;
+    h3 {
       color: #005f99;
+      margin-bottom: 6px;
     }
-    .resume-section p, .resume-section ul {
+    p, ul {
       margin-left: 20px;
+      line-height: 1.5;
+    }
+    ul {
+      list-style-type: disc;
+      margin-bottom: 20px;
+    }
+    .contact-info {
+      text-align: center;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .contact-line {
+      margin-bottom: 8px;
+    }
+    .contact-info a {
+      color: #007acc;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+    .section-item {
+      margin-bottom: 18px;
+    }
+    .projects-list {
+      list-style-type: square;
+      margin-left: 40px;
     }
     .download-btn-container {
       text-align: center;
       margin-top: 40px;
+      margin-bottom: 60px; /* Space between button and footer */
     }
-    .download-btn-container a.btn {
-      font-size: 1.1rem;
+    .download-btn {
+      background-color: #007acc;
+      color: white;
       padding: 12px 28px;
+      border: none;
       border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+    .download-btn:hover {
+      background-color: #005f99;
     }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="navbar-container">
       <div class="brand">MyPortfolio</div>
@@ -53,72 +100,104 @@
         <li><a href="about.html">About</a></li>
         <li><a href="skills.html">Skills</a></li>
         <li><a href="projects.html">Projects</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="resume.html" class="active">Resume</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Resume Content -->
-  <section class="resume-section">
+  <div class="resume-container">
     <h1>Thota Lakshmi Prasanna</h1>
-    <p><strong>Email:</strong> thotalakshmiprasanna825@gmail.com | <strong>Phone:</strong> +1 (234) 567-890</p>
-    <p>
-      <strong>LinkedIn:</strong> 
-      <a href="https://www.linkedin.com/in/lakshmi-prasanna-a774532b1" target="_blank" rel="noopener noreferrer">
-        linkedin.com/in/lakshmi-prasanna-a774532b1
-      </a> 
-      | 
-      <strong>GitHub:</strong> 
-      <a href="https://github.com/Lakshmiprasanna-28" target="_blank" rel="noopener noreferrer">
-        github.com/Lakshmiprasanna-28
-      </a>
-    </p>
-
-    <h2>Objective</h2>
-    <p>Final year B.Tech student aspiring to become a Full Stack Developer. Passionate about building scalable web applications and delivering excellent UI/UX experiences. Eager to contribute skills and grow in a dynamic tech environment.</p>
-
-    <h2>Education</h2>
-    <h3>Bachelor of Technology (B.Tech)</h3>
-    <p>Sree Vahini Institute of Science and Technology</p>
-    <p>JNTUK University | Expected Graduation: 2026</p>
-    <ul>
-      <li>Specialization: Computer Science & Engineering</li>
-      <li>Relevant Coursework: Data Structures, Web Development, Database Systems, UI/UX Design</li>
-    </ul>
-
-    <h2>Technical Skills</h2>
-    <ul>
-      <li>Languages: HTML5, CSS3, JavaScript, Python</li>
-      <li>Frameworks & Libraries: React, Node.js, Express.js</li>
-      <li>Databases: MongoDB, MySQL</li>
-      <li>Tools: Git, VS Code, Figma, Firebase</li>
-      <li>Other: UI/UX Design principles, Responsive & Accessible Web Design</li>
-    </ul>
-
-    <h2>Projects</h2>
-    <h3>Portfolio Website</h3>
-    <p>A personal portfolio built with React and Tailwind CSS to showcase skills and projects.</p>
-
-    <h3>Task Manager App</h3>
-    <p>A task management application with real-time syncing using React and Firebase.</p>
-
-    <h3>Weather Dashboard</h3>
-    <p>Dashboard displaying current weather and forecast fetched from a public API.</p>
-
-    <h2>Additional Information</h2>
-    <ul>
-      <li>Strong problem-solving and analytical skills.</li>
-      <li>Self-motivated with a continuous learning mindset.</li>
-      <li>Good communication and teamwork abilities.</li>
-    </ul>
-
-    <div class="download-btn-container">
-      <a href="assets/resume/Thota_Lakshmi_Prasanna_Resume.pdf" download class="btn">Download Resume (PDF)</a>
+    <div class="contact-info">
+      <div class="contact-line">
+        <span>Email: <a href="mailto:thotalakshmiprasanna825@gmail.com">thotalakshmiprasanna825@gmail.com</a></span> |
+        <span>Phone: <a href="tel:+919949011499">+91 9949011499</a></span>
+      </div>
+      <div class="contact-line">
+        <span>LinkedIn: <a href="https://www.linkedin.com/in/lakshmi-prasanna-a774532b1" target="_blank" rel="noopener noreferrer">linkedin.com/in/lakshmi-prasanna-a774532b1</a></span> |
+        <span>GitHub: <a href="https://github.com/Lakshmiprasanna-28" target="_blank" rel="noopener noreferrer">github.com/Lakshmiprasanna-28</a></span>
+      </div>
     </div>
-  </section>
 
-  <!-- Footer -->
+    <section>
+      <h2>Career Objective</h2>
+      <p>To contribute as a Full Stack Developer by building scalable and user-centric web applications, working in an environment that encourages continuous learning and innovation.</p>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="section-item">
+        <h3>B.Tech in Computer Science and Engineering</h3>
+        <p>Sree Vahini Institute of Science and Technology, JNTUK (2022 – Present)</p>
+        <p>CGPA: 8.07 / 10 (75.67%)</p>
+      </div>
+      <div class="section-item">
+        <h3>Intermediate (MPC)</h3>
+        <p>Padmavathi Junior Mahila Kalasala (Venkateswara College), 2020 – 2022</p>
+        <p>Marks: 619 / 1000 (61.9%)</p>
+      </div>
+      <div class="section-item">
+        <h3>SSC (10th Grade)</h3>
+        <p>St. John's English Medium High School, 2019 – 2020</p>
+        <p>Marks: 503 / 600 (83.83%)</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Technical Skills & Tools</h2>
+      <ul>
+        <li>Languages: Java, JavaScript, HTML5, CSS3</li>
+        <li>Frameworks/Libraries: React, Bootstrap</li>
+        <li>Database: Firebase, MySQL (basic)</li>
+        <li>Version Control: Git, GitHub</li>
+        <li>Other Tools: DevOps basics, CI/CD pipelines (Infosys Springboard)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <ul class="projects-list">
+        <li><strong>Portfolio Website:</strong> Personal portfolio built with HTML, CSS, and JavaScript to showcase skills and projects.</li>
+        <li><strong>Blog CMS:</strong> Full-stack blogging platform with admin dashboard and CRUD features. (Coming soon)</li>
+        <li><strong>Task Manager App:</strong> React & Firebase-based real-time task management app. (Coming soon)</li>
+        <li><strong>Weather Dashboard:</strong> Displays current weather data and forecasts using public APIs. (Coming soon)</li>
+        <li><strong>E-commerce Store:</strong> Scalable web app for online shopping with secure checkout. (Coming soon)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Certifications</h2>
+      <ul>
+        <li>Introduction to Java — SoloLearn</li>
+        <li>Java Intermediate — SoloLearn</li>
+        <li>5-Day Bootcamp + 24-Hour Hackathon on Data Science & AIML — Brainovision Solutions</li>
+        <li>Continuous Integration and Delivery - DevOps — Infosys Springboard</li>
+        <li>Software Engineering and Agile Software Development — Infosys Springboard</li>
+        <li>Full Stack Java Internship Course Completion — Excelr</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Soft Skills</h2>
+      <ul>
+        <li>Strong communication skills</li>
+        <li>Problem-solving mindset</li>
+        <li>Adaptability and eagerness to learn</li>
+        <li>Time management</li>
+        <li>Team collaboration</li>
+      </ul>
+    </section>
+
+    <!-- Download Resume Button -->
+    <div class="download-btn-container">
+      <a href="assets/resume/Thota_Lakshmi_Prasanna_Resume.pdf" download class="download-btn" aria-label="Download Resume">
+        Download Resume
+      </a>
+    </div>
+  </div>
+
   <footer>
     © 2025 Thota Lakshmi Prasanna. All rights reserved.
   </footer>

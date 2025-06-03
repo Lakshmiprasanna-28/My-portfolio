@@ -5,19 +5,238 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact | Thota Lakshmi Prasanna</title>
   <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* Navbar styles */
+    nav.navbar {
+      background-color: #007acc;
+      color: white;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+      user-select: none;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    ul.nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #888 transparent;
+    }
+
+    ul.nav-links::-webkit-scrollbar { height: 6px; }
+    ul.nav-links::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 3px;
+    }
+
+    ul.nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 8px;
+      white-space: nowrap;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    ul.nav-links li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    ul.nav-links li a.active {
+      background-color: transparent;
+      color: #fff8b5;
+      box-shadow: none;
+    }
+
+    /* Responsive menu */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      ul.nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #007acc;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border-radius: 8px;
+        padding: 10px 0;
+        z-index: 1001;
+      }
+      ul.nav-links.show {
+        display: flex;
+      }
+      ul.nav-links li {
+        margin: 8px 0;
+        text-align: center;
+      }
+    }
+
+    /* Contact page specific styles */
+    .success-box {
+      border: 2px solid #4CAF50;
+      background-color: #e8f5e9;
+      padding: 30px;
+      margin-top: 40px;
+      text-align: center;
+      border-radius: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .success-box h2 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+
+    .success-box .btn {
+      margin: 10px;
+      cursor: pointer;
+      padding: 10px 16px;
+      border: none;
+      background-color: #007acc;
+      color: white;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .success-box .btn:hover {
+      background-color: #005fa3;
+    }
+
+    .main-content {
+      max-width: 800px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .main-content h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      font-size: 1.1rem;
+      margin: 6px 0;
+    }
+
+    .contact-info a {
+      color: #007acc;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    #form-container {
+      margin-top: 40px;
+    }
+
+    form.contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form.contact-form input[type="text"],
+    form.contact-form input[type="email"],
+    form.contact-form textarea {
+      padding: 10px 12px;
+      font-size: 1rem;
+      border: 1.5px solid #ccc;
+      border-radius: 6px;
+      font-family: Arial, sans-serif;
+      resize: vertical;
+    }
+
+    form.contact-form input[type="text"]:focus,
+    form.contact-form input[type="email"]:focus,
+    form.contact-form textarea:focus {
+      border-color: #007acc;
+      outline: none;
+      background-color: #fff;
+    }
+
+    form.contact-form button.btn {
+      width: 120px;
+      align-self: center;
+      padding: 12px 0;
+      font-weight: 700;
+      font-size: 1.1rem;
+      background-color: #007acc;
+      border: none;
+      border-radius: 7px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      margin-bottom: 50px; /* Added space between button and footer */
+    }
+
+    form.contact-form button.btn:hover {
+      background-color: #005fa3;
+    }
+
+    footer {
+      background-color: #007acc;
+      color: white;
+      text-align: center;
+      padding: 18px 20px;
+      margin-top: auto;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 <body>
-  <nav class="navbar">
+  <nav class="navbar" role="navigation">
     <div class="navbar-container">
       <div class="brand">MyPortfolio</div>
-      <div class="hamburger">&#9776;</div>
+      <div class="hamburger" tabindex="0">&#9776;</div>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="skills.html">Skills</a></li>
         <li><a href="projects.html">Projects</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
         <li><a href="contact.html" class="active">Contact</a></li>
         <li><a href="resume.html">Resume</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
       </ul>
     </div>
   </nav>
@@ -28,24 +247,95 @@
 
     <div class="contact-info">
       <p><strong>Email:</strong> <a href="mailto:thotalakshmiprasanna825@gmail.com">thotalakshmiprasanna825@gmail.com</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/lakshmi-prasanna-a774532b1" target="_blank" rel="noopener noreferrer">linkedin.com/in/your-linkedin-profile</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/lakshmi-prasanna-a774532b1" target="_blank" rel="noopener noreferrer">linkedin.com/in/lakshmi-prasanna-a774532b1</a></p>
       <p><strong>GitHub:</strong> <a href="https://github.com/Lakshmiprasanna-28" target="_blank" rel="noopener noreferrer">github.com/Lakshmiprasanna-28</a></p>
-      <p><strong>Phone:</strong> +1 (234) 567-890</p>
+      <p><strong>Phone:</strong> <a href="tel:+919949011499">+91 9949011499</a></p>
     </div>
 
-    <form class="contact-form">
-      <h2>Send a Message</h2>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Write your message..." required></textarea>
-      <button type="submit" class="btn">Send</button>
-    </form>
+    <div id="form-container">
+      <form id="contactForm" class="contact-form">
+        <h2>Send a Message</h2>
+        <input type="text" name="name" id="name" placeholder="Your Name" />
+        <input type="email" name="email" id="email" placeholder="Your Email" />
+        <textarea name="message" id="message" placeholder="Write your message..." rows="6"></textarea>
+
+        <input type="hidden" name="_captcha" value="false" />
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </div>
+
+    <div id="success-message" class="success-box" style="display: none;">
+      <h2>Thank you! Your message has been sent successfully.</h2>
+      <button onclick="window.location.href='index.html'" class="btn">Go to Home</button>
+      <button onclick="showFormAgain()" class="btn">Submit Another Response</button>
+    </div>
   </div>
 
   <footer>
     © 2025 Thota Lakshmi Prasanna. All rights reserved.
   </footer>
 
-  <script src="assets/js/script.js"></script>
+  <script>
+    // Hamburger toggle menu
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    hamburger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        navLinks.classList.toggle("show");
+      }
+    });
+
+    // Form submission handling
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name) {
+        alert('Please enter your name.');
+        return;
+      }
+
+      if (!email) {
+        alert('Please enter your email.');
+        return;
+      }
+
+      if (!message) {
+        alert('Please enter your message.');
+        return;
+      }
+
+      const formData = new FormData(form);
+
+      try {
+        await fetch('https://formsubmit.co/thotalakshmiprasanna825@gmail.com', {
+          method: 'POST',
+          body: formData
+        });
+
+        form.reset();
+        document.getElementById('form-container').style.display = 'none';
+        document.getElementById('success-message').style.display = 'block';
+      } catch (error) {
+        alert('Oops! Something went wrong. Please try again later.');
+        console.error('Form submission error:', error);
+      }
+    });
+
+    function showFormAgain() {
+      document.getElementById('success-message').style.display = 'none';
+      document.getElementById('form-container').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
