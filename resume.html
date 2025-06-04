@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Resume | Thota Lakshmi Prasanna</title>
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB92G2LS8T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RB92G2LS8T');
+  </script>
+
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,6 +30,7 @@
       padding: 30px 40px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,122,204,0.1);
+      border: 3px solid #007acc; /* Blue border added */
     }
     h1 {
       text-align: center;
@@ -71,7 +82,7 @@
     .download-btn-container {
       text-align: center;
       margin-top: 40px;
-      margin-bottom: 60px; /* Space between button and footer */
+      margin-bottom: 60px;
     }
     .download-btn {
       background-color: #007acc;
@@ -88,6 +99,19 @@
     .download-btn:hover {
       background-color: #005f99;
     }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #0e71d3;
+      color: white;
+
+      /* Fixed footer at bottom */
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
@@ -101,6 +125,7 @@
         <li><a href="skills.html">Skills</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="resume.html" class="active">Resume</a></li>
         <li><a href="testimonials.html">Testimonials</a></li>
@@ -190,9 +215,8 @@
       </ul>
     </section>
 
-    <!-- Download Resume Button -->
     <div class="download-btn-container">
-      <a href="assets/resume/Thota_Lakshmi_Prasanna_Resume.pdf" download class="download-btn" aria-label="Download Resume">
+      <a href="assets/resume/Thota_Lakshmi_Prasanna_Resume.pdf" download class="download-btn" id="resumeDownload" aria-label="Download Resume">
         Download Resume
       </a>
     </div>
@@ -203,5 +227,16 @@
   </footer>
 
   <script src="assets/js/script.js"></script>
+
+  <!-- Google Analytics Resume Download Tracking -->
+  <script>
+    document.getElementById('resumeDownload').addEventListener('click', function () {
+      gtag('event', 'resume_download', {
+        'event_category': 'Resume',
+        'event_label': 'PDF Download',
+        'value': 1
+      });
+    });
+  </script>
 </body>
 </html>

@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Feedback | Thota Lakshmi Prasanna</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB92G2LS8T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RB92G2LS8T');
+  </script>
+
   <style>
     * { box-sizing: border-box; }
     body, html {
@@ -16,7 +26,6 @@
       flex-direction: column;
       min-height: 100vh;
     }
-
     nav.navbar {
       background-color: #007acc;
       color: white;
@@ -26,7 +35,6 @@
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
     .navbar-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -35,37 +43,35 @@
       justify-content: space-between;
       position: relative;
     }
-
     .brand {
       font-weight: bold;
       font-size: 1.5rem;
       user-select: none;
     }
-
     .hamburger {
       display: none;
       font-size: 28px;
       cursor: pointer;
       user-select: none;
     }
-
     ul.nav-links {
       list-style: none;
       display: flex;
       gap: 30px;
       margin: 0;
       padding: 0;
-      overflow-x: auto;
-      scrollbar-width: thin;
-      scrollbar-color: #888 transparent;
+      /* REMOVE horizontal scroll on desktop */
+      /* overflow-x: auto; */
+      /* scrollbar-width: thin; */
+      /* scrollbar-color: #888 transparent; */
+      
+      margin-left: 40px; /* Added spacing between brand and nav */
     }
-
     ul.nav-links::-webkit-scrollbar { height: 6px; }
     ul.nav-links::-webkit-scrollbar-thumb {
       background-color: #888;
       border-radius: 3px;
     }
-
     ul.nav-links li a {
       color: white;
       text-decoration: none;
@@ -75,17 +81,14 @@
       border-radius: 4px;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
-
     ul.nav-links li a:hover {
       background-color: rgba(255, 255, 255, 0.2);
     }
-
     ul.nav-links li a.active {
       background-color: transparent;
       color: #fff8b5;
       box-shadow: none;
     }
-
     @media (max-width: 768px) {
       .hamburger { display: block; }
       ul.nav-links {
@@ -99,11 +102,16 @@
         border-radius: 8px;
         padding: 10px 0;
         z-index: 1001;
+
+        /* Enable scroll on mobile if needed */
+        overflow-x: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #888 transparent;
+        margin-left: 0; /* Remove margin on mobile */
       }
       ul.nav-links.show { display: flex; }
       ul.nav-links li { margin: 8px 0; text-align: center; }
     }
-
     main.container {
       max-width: 600px;
       margin: 80px auto 100px;
@@ -113,22 +121,20 @@
       padding: 25px 30px;
       flex-grow: 1;
       border: 2px solid #007acc;
+      padding-bottom: 120px;  /* to prevent submit button hiding behind footer */
     }
-
     main.container h2 {
       text-align: center;
       margin-bottom: 24px;
       font-weight: 700;
       color: #333;
     }
-
     label {
       display: block;
       margin-top: 18px;
       font-weight: 600;
       color: #333;
     }
-
     input[type="text"],
     input[type="email"],
     select,
@@ -140,7 +146,6 @@
       border-radius: 6px;
       font-size: 1rem;
     }
-
     input:focus,
     textarea:focus,
     select:focus {
@@ -148,7 +153,6 @@
       outline: none;
       background-color: #fff;
     }
-
     .rating {
       display: flex;
       flex-direction: row-reverse;
@@ -156,37 +160,31 @@
       margin-top: 8px;
       gap: 8px;
     }
-
     .rating input { display: none; }
     .rating label {
       font-size: 30px;
       color: #ccc;
       cursor: pointer;
     }
-
     .rating input:checked ~ label,
     .rating label:hover,
     .rating label:hover ~ label {
       color: gold;
     }
-
     .recommendation {
       margin-top: 12px;
       display: flex;
       gap: 30px;
       align-items: center;
     }
-
     .recommendation input[type="radio"] {
       margin-right: 6px;
     }
-
     .recommendation label {
       cursor: pointer;
       font-weight: 600;
       color: #333;
     }
-
     button[type="submit"] {
       margin-top: 28px;
       width: 100%;
@@ -199,22 +197,23 @@
       font-size: 1.1rem;
       cursor: pointer;
     }
-
     button[type="submit"]:hover {
       background-color: #005fa3;
     }
-
     footer {
       background-color: #007acc;
       color: white;
       text-align: center;
       padding: 18px 20px;
-      margin-top: auto;
       font-weight: 600;
       font-size: 0.9rem;
       box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1002;
     }
-
     #successMessage {
       display: none;
       text-align: center;
@@ -225,7 +224,6 @@
       border-radius: 8px;
       max-width: 600px;
     }
-
     #successMessage button {
       margin: 10px 10px 0;
       background-color: #007acc;
@@ -236,7 +234,6 @@
       cursor: pointer;
       font-weight: bold;
     }
-
     #successMessage button:hover {
       background-color: #005fa3;
     }
@@ -253,6 +250,7 @@
         <li><a href="skills.html">Skills</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="resume.html">Resume</a></li>
         <li><a href="testimonials.html">Testimonials</a></li>
@@ -267,6 +265,7 @@
       action="https://formsubmit.co/thotalakshmiprasanna825@gmail.com" 
       method="POST" 
       target="formFrame"
+      id="feedbackForm"
     >
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
@@ -330,52 +329,69 @@
     © 2025 Thota Lakshmi Prasanna. All rights reserved.
   </footer>
 
-  <script>
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
+<script>
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
 
-    hamburger.addEventListener("click", () => {
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  hamburger.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
       navLinks.classList.toggle("show");
+    }
+  });
+
+  document.getElementById("feedbackForm").addEventListener("submit", function (e) {
+    const form = this;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const rating = form.querySelector('input[name="rating"]:checked');
+    const feedback = form.feedback.value.trim();
+
+    const nameRegex = /^[A-Za-z\s]{3,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!nameRegex.test(name)) {
+      alert("Please enter a valid name (at least 3 letters, only alphabets).");
+      form.name.focus();
+      e.preventDefault();
+      return;
+    }
+
+    if (email && !emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      form.email.focus();
+      e.preventDefault();
+      return;
+    }
+
+    if (!rating) {
+      alert("Please rate your experience.");
+      e.preventDefault();
+      return;
+    }
+
+    if (feedback.length < 2) {
+      alert("Please enter valid feedback (at least 2 characters).");
+      form.feedback.focus();
+      e.preventDefault();
+      return;
+    }
+
+    gtag('event', 'feedback_submitted', {
+      'event_category': 'form',
+      'event_label': 'Feedback Form Submitted',
+      'value': 1
     });
 
-    hamburger.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        navLinks.classList.toggle("show");
-      }
-    });
-
-    document.querySelector("form").addEventListener("submit", function (e) {
-      const form = this;
-      const name = form.name.value.trim();
-      const rating = form.querySelector('input[name="rating"]:checked');
-      const feedback = form.feedback.value.trim();
-
-      if (!name) {
-        alert("Please enter your name.");
-        form.name.focus();
-        e.preventDefault();
-        return;
-      }
-
-      if (!rating) {
-        alert("Please rate your experience.");
-        e.preventDefault();
-        return;
-      }
-
-      if (!feedback) {
-        alert("Please provide your feedback.");
-        form.feedback.focus();
-        e.preventDefault();
-        return;
-      }
-
-      setTimeout(() => {
-        form.style.display = "none";
-        document.getElementById("successMessage").style.display = "block";
-      }, 1000);
-    });
-  </script>
+    setTimeout(() => {
+      form.style.display = "none";
+      document.getElementById("successMessage").style.display = "block";
+    }, 1000);
+  });
+</script>
 </body>
 </html>

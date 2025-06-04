@@ -4,8 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thota Lakshmi Prasanna Portfolio</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB92G2LS8T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RB92G2LS8T');
+  </script>
+
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="assets/js/script.js" defer></script>
+
 </head>
 <body>
   <!-- Loader with 3 bouncing dots -->
@@ -26,6 +38,7 @@
         <li><a href="skills.html">Skills</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="resume.html">Resume</a></li>
         <li><a href="testimonials.html">Testimonials</a></li>
@@ -45,9 +58,23 @@
     </div>
   </div>
 
+  <!-- Google Map container -->
+  <div id="map" style="width: 100%; height: 400px; margin: 2rem 0;"></div>
+
   <!-- Footer -->
   <footer>
     © 2025 Thota Lakshmi Prasanna. All rights reserved.
   </footer>
+
+  <!-- Optional: Add this script here if you don't want to put initMap in your external JS -->
+  <script>
+    function initMap() {
+      // Map centered at Mumbai, India (example coordinates)
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 19.0760, lng: 72.8777 },
+        zoom: 10,
+      });
+    }
+  </script>
 </body>
 </html>

@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact | Thota Lakshmi Prasanna</title>
   <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB92G2LS8T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RB92G2LS8T');
+  </script>
+
   <style>
     html, body {
       margin: 0;
@@ -59,14 +69,22 @@
       margin: 0;
       padding: 0;
       overflow-x: auto;
+      max-width: 75vw;
+      white-space: nowrap;
       scrollbar-width: thin;
       scrollbar-color: #888 transparent;
     }
 
-    ul.nav-links::-webkit-scrollbar { height: 6px; }
+    ul.nav-links::-webkit-scrollbar {
+      height: 6px;
+    }
     ul.nav-links::-webkit-scrollbar-thumb {
       background-color: #888;
       border-radius: 3px;
+    }
+
+    ul.nav-links li {
+      display: inline-block;
     }
 
     ul.nav-links li a {
@@ -77,6 +95,7 @@
       white-space: nowrap;
       border-radius: 4px;
       transition: background-color 0.3s ease, color 0.3s ease;
+      display: inline-block;
     }
 
     ul.nav-links li a:hover {
@@ -102,6 +121,8 @@
         border-radius: 8px;
         padding: 10px 0;
         z-index: 1001;
+        max-width: none;
+        overflow-x: visible;
       }
       ul.nav-links.show {
         display: flex;
@@ -109,6 +130,7 @@
       ul.nav-links li {
         margin: 8px 0;
         text-align: center;
+        display: block;
       }
     }
 
@@ -117,7 +139,7 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding: 10px 20px 40px; /* reduced top padding here */
+      padding: 10px 20px 40px;
     }
 
     .main-content {
@@ -270,6 +292,7 @@
         <li><a href="skills.html">Skills</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
         <li><a href="contact.html" class="active">Contact</a></li>
         <li><a href="resume.html">Resume</a></li>
         <li><a href="testimonials.html">Testimonials</a></li>
@@ -294,7 +317,7 @@
           <input type="email" name="email" id="email" placeholder="Your Email" required />
           <textarea name="message" id="message" placeholder="Write your message..." rows="6" required></textarea>
           <input type="hidden" name="_captcha" value="false" />
-          <button type="submit" class="btn">Send</button>
+          <button type="submit" class="btn" id="sendBtn">Send</button>
         </form>
       </div>
       <div id="success-message" class="success-box" style="display: none;">
@@ -310,53 +333,74 @@
   </footer>
 
   <script>
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
 
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
 
-    hamburger.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        navLinks.classList.toggle("show");
-      }
-    });
-
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', async function (e) {
+  hamburger.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-
-      if (!name) return alert('Please enter your name.');
-      if (!email) return alert('Please enter your email.');
-      if (!message) return alert('Please enter your message.');
-
-      const formData = new FormData(form);
-
-      try {
-        await fetch('https://formsubmit.co/thotalakshmiprasanna825@gmail.com', {
-          method: 'POST',
-          body: formData
-        });
-
-        form.reset();
-        document.getElementById('form-container').style.display = 'none';
-        document.getElementById('success-message').style.display = 'block';
-      } catch (error) {
-        alert('Oops! Something went wrong. Please try again later.');
-        console.error('Form submission error:', error);
-      }
-    });
-
-    function showFormAgain() {
-      document.getElementById('success-message').style.display = 'none';
-      document.getElementById('form-container').style.display = 'block';
+      navLinks.classList.toggle("show");
     }
+  });
+
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    // Validation rules
+    const nameRegex = /^[A-Za-z ]{3,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!nameRegex.test(name)) {
+      alert("Please enter a valid name (at least 3 letters, only alphabets allowed).");
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    if (message.length < 2) {
+      alert("Please enter a valid message (at least 2 characters).");
+      return;
+    }
+
+    const formData = new FormData(form);
+
+    try {
+      await fetch('https://formsubmit.co/thotalakshmiprasanna825@gmail.com', {
+        method: 'POST',
+        body: formData
+      });
+
+      // Send event to Google Analytics
+      gtag('event', 'contact_form_submitted', {
+        'event_category': 'contact_form',
+        'event_label': 'Contact Form Submitted',
+      });
+
+      form.reset();
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('success-message').style.display = 'block';
+    } catch (error) {
+      alert('Oops! Something went wrong. Please try again later.');
+      console.error('Form submission error:', error);
+    }
+  });
+
+  function showFormAgain() {
+    document.getElementById('success-message').style.display = 'none';
+    document.getElementById('form-container').style.display = 'block';
+  }
   </script>
 </body>
 </html>
