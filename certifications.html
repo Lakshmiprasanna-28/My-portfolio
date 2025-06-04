@@ -9,7 +9,7 @@
     .main-content {
       max-width: 900px;
       margin: 40px auto;
-      padding: 20px;
+      padding: 100px 20px 60px; /* Increased top and bottom padding */
       background: #f9f9f9;
       color: #222;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,7 +22,7 @@
     .cert-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 60px 0; /* Added 60px bottom margin for extra space */
+      margin: 0 0 60px 0;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
@@ -36,6 +36,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
     .cert-details {
       max-width: 70%;
@@ -63,9 +64,25 @@
       text-decoration: none;
       display: inline-block;
       text-align: center;
+      margin-top: 10px;
     }
     .btn:hover {
       background-color: #005f99;
+    }
+
+    /* Responsive Fix */
+    @media (max-width: 600px) {
+      .cert-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .cert-details {
+        max-width: 100%;
+      }
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -97,7 +114,6 @@
         </div>
         <a href="assets/images/certifications/java_intro.jpeg" target="_blank" rel="noopener" class="btn">View Certificate</a>
       </li>
-
       <li class="cert-item">
         <div class="cert-details">
           <p class="cert-title">Java Intermediate</p>
@@ -105,7 +121,6 @@
         </div>
         <a href="assets/images/certifications/java_intermediate.jpeg" target="_blank" rel="noopener" class="btn">View Certificate</a>
       </li>
-
       <li class="cert-item">
         <div class="cert-details">
           <p class="cert-title">5-Day Bootcamp + 24-Hour Hackathon on Data Science & AIML</p>
@@ -113,7 +128,6 @@
         </div>
         <a href="assets/images/certifications/ds_aiml_bootcamp.jpeg" target="_blank" rel="noopener" class="btn">View Certificate</a>
       </li>
-
       <li class="cert-item">
         <div class="cert-details">
           <p class="cert-title">Continuous Integration and Delivery - DevOps</p>
@@ -121,7 +135,6 @@
         </div>
         <a href="assets/images/certifications/devops_certification.jpeg" target="_blank" rel="noopener" class="btn">View Certificate</a>
       </li>
-
       <li class="cert-item">
         <div class="cert-details">
           <p class="cert-title">Software Engineering and Agile Software Development</p>
@@ -129,7 +142,6 @@
         </div>
         <a href="assets/images/certifications/software_engineering_agile.jpeg" target="_blank" rel="noopener" class="btn">View Certificate</a>
       </li>
-
       <li class="cert-item">
         <div class="cert-details">
           <p class="cert-title">Full Stack Java Internship Course Completion</p>
